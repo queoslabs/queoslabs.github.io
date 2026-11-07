@@ -1,145 +1,129 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0a1018">
-  <meta name="description" content="Queos Labs is an independent research group exploring machine learning, reliable evaluation, multimodal reasoning, and reproducible experiments.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Queos Labs — Questions worth testing">
-  <meta property="og:description" content="Independent research in machine learning, evaluation, and multimodal intelligence.">
-  <meta property="og:url" content="https://queoslabs.github.io/">
-  <title>Queos Labs — Questions worth testing</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a1018'/%3E%3Ctext x='32' y='47' text-anchor='middle' font-family='Arial,sans-serif' font-size='47' font-weight='bold' fill='%23b6eb91'%3EQ%3C/text%3E%3C/svg%3E">
-  <style>
-    :root { color-scheme: dark; --bg:#0a1018; --surface:#121e2a; --surface2:#172331; --line:#2a3d47; --text:#f4f5ee; --muted:#a2b1bc; --lime:#b6eb91; --teal:#81e7db; --blue:#9daddf; }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
-    a{color:inherit;text-decoration:none}
-    a:focus-visible,button:focus-visible{outline:3px solid var(--lime);outline-offset:5px}
-    .skip{position:absolute;top:-50px;left:15px;padding:9px 12px;background:var(--lime);color:var(--bg);z-index:5}
-    .skip:focus{top:10px}
-    .wrap{width:min(1120px,calc(100% - 48px));margin-inline:auto}
-    header{border-bottom:1px solid rgba(162,177,188,.15);position:relative;z-index:2}
-    .nav{min-height:83px;display:flex;align-items:center;justify-content:space-between;gap:25px}
-    .logo{display:flex;align-items:center;gap:12px;font-weight:780;font-size:1.13rem;letter-spacing:-.045em}
-    .logo-mark{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--lime);color:var(--bg);font-size:1.5rem;font-weight:860;line-height:1}
-    .links{display:flex;align-items:center;gap:29px;color:#c0cbd0;font-size:.9rem}
-    .links a:hover,.text-link:hover{color:var(--lime)}
-    .links .external{border:1px solid var(--line);padding:9px 14px;border-radius:9px}
-    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--lime);font-size:.76rem;text-transform:uppercase;letter-spacing:.17em;font-weight:700}
-    .eyebrow:before{content:"";display:inline-block;width:20px;height:1px;background:currentColor}
-    .hero{padding:90px 0 92px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:70px}
-    h1,h2,h3,p{margin-top:0}
-    h1{font-size:clamp(3.6rem,7.4vw,7rem);line-height:1.02;letter-spacing:-.087em;max-width:780px;margin:25px 0 28px;font-weight:780}
-    h1 span{color:var(--lime)}
-    .lead{font-size:clamp(1.02rem,1.3vw,1.25rem);max-width:575px;color:#b5c4cc;line-height:1.78}
-    .actions{display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-top:34px}
-    .button{display:inline-flex;align-items:center;gap:13px;background:var(--lime);color:#112017;padding:14px 21px;border-radius:10px;font-size:.89rem;font-weight:750;transition:transform .2s,background .2s}
-    .button:hover{background:#d1ffad;transform:translateY(-2px)}
-    .text-link{font-size:.9rem;font-weight:600;color:#dbe5e9}
-    .symbol{min-height:370px;display:grid;place-items:center;position:relative;isolation:isolate}
-    .symbol:before{content:"";position:absolute;inset:2%;background:radial-gradient(circle at 50% 50%,rgba(129,231,219,.16),transparent 63%);filter:blur(12px)}
-    .symbol svg{width:min(100%,430px);height:auto;filter:drop-shadow(0 0 27px rgba(122,226,212,.09))}
-    .symbol small{position:absolute;bottom:9px;right:20px;color:#7f98a6;font-size:.66rem;letter-spacing:.17em;text-transform:uppercase}
-    .line{border-top:1px solid var(--line)}
-    section{padding:87px 0}
-    .section-intro{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:30px}
-    h2{font-size:clamp(2rem,3.5vw,3.4rem);letter-spacing:-.067em;line-height:1.16;margin:16px 0 0}
-    .section-intro p{max-width:430px;margin-bottom:0;color:var(--muted);font-size:.96rem}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{padding:31px 29px 32px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(155deg,rgba(26,41,54,.84),rgba(16,26,37,.82));min-height:256px}
-    .number{font:600 .78rem ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--teal);letter-spacing:.06em}
-    .card h3{font-size:1.32rem;letter-spacing:-.037em;margin:37px 0 10px;line-height:1.35}
-    .card p{font-size:.91rem;line-height:1.7;color:var(--muted);margin-bottom:0}
-    .principles{display:grid;grid-template-columns:.9fr 1.1fr;gap:75px;align-items:start}
-    .principles p{color:var(--muted)}
-    .principle{border-top:1px solid var(--line);display:grid;grid-template-columns:40px 1fr;gap:18px;padding:22px 0}
-    .principle:last-child{border-bottom:1px solid var(--line)}
-    .principle strong{font-size:1.07rem;font-weight:700}
-    .principle p{font-size:.91rem;margin:6px 0 0}
-    .work{border:1px solid #354d4a;border-radius:16px;padding:35px 39px;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center;background:linear-gradient(120deg,rgba(30,57,55,.56),rgba(19,29,42,.8))}
-    .work h3{font-size:1.5rem;letter-spacing:-.047em;margin:8px 0 9px}
-    .work p{color:#abbec1;margin-bottom:0;max-width:680px}
-    .pill{color:var(--lime);border:1px solid #537268;border-radius:30px;padding:7px 12px;font-size:.75rem;font-weight:660;white-space:nowrap}
-    .people{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:27px}
-    .person{border-top:1px solid var(--line);padding-top:20px}
-    .person strong{display:block;font-size:1.12rem;letter-spacing:-.025em}
-    .person span{font-size:.85rem;color:var(--muted)}
-    footer{padding:30px 0 41px;border-top:1px solid var(--line);color:#90a6b0;font-size:.84rem}
-    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-    .footer-name{color:var(--text);font-weight:680}
-    @media(max-width:860px){.hero{grid-template-columns:1fr;gap:10px;padding-top:72px}.symbol{min-height:260px;max-width:430px;margin:auto}.cards{grid-template-columns:1fr}.card{min-height:unset}.card h3{margin-top:22px}.principles{grid-template-columns:1fr;gap:25px}.section-intro{display:block}.section-intro p{margin-top:17px}.work{grid-template-columns:1fr}.links{gap:15px}}
-    @media(max-width:550px){.wrap{width:min(100% - 32px,1120px)}.nav{min-height:72px}.links a:not(.external){display:none}.links .external{padding:7px 11px}.hero{padding:62px 0 48px}h1{font-size:3.5rem}.symbol{min-height:200px}.symbol svg{max-width:290px}.symbol small{display:none}section{padding:64px 0}.work{padding:25px}.people{grid-template-columns:1fr}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fafaf8">
+<meta name="description" content="Queos Labs is an independent machine learning research group exploring reliable evaluation, multimodal reasoning and reproducible experiments.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Queos Labs — Independent Research">
+<meta property="og:description" content="Small lab. Big questions. Careful experiments.">
+<meta property="og:url" content="https://queoslabs.github.io/">
+<link rel="canonical" href="https://queoslabs.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23fafaf8'/%3E%3Ctext x='32' y='49' font-family='Arial,sans-serif' font-size='52' font-weight='900' text-anchor='middle' fill='%231e3af5'%3EQ%3C/text%3E%3C/svg%3E">
+<title>Queos Labs — Independent ML Research</title>
+<style>
+:root{--paper:#fafaf8;--ink:#171717;--blue:#1e3af5;--muted:#60616a;--line:#d5d6d7;--edge:clamp(20px,4vw,72px)}
+*,*:before,*:after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;color:var(--ink);background:var(--paper);font-family:Arial,Helvetica,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:3px solid var(--blue);outline-offset:5px}
+::selection{background:var(--blue);color:white}
+.skip{position:absolute;top:-100px;left:var(--edge);z-index:99;background:var(--blue);color:#fff;padding:10px}
+.skip:focus{top:10px}
+.wrap{width:100%;max-width:1760px;margin:auto;padding-inline:var(--edge)}
+.topbar{min-height:82px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px}
+.brand{color:var(--blue);font-size:20px;font-weight:900;letter-spacing:-.085em;line-height:1}
+nav{display:flex;gap:clamp(17px,3vw,42px);align-items:center}
+nav a{font-weight:600;font-size:13px}
+nav a:hover,footer a:hover{color:var(--blue)}
+nav .git{color:var(--blue)}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.hero{padding-top:clamp(42px,6vw,90px);padding-bottom:clamp(85px,10vw,155px)}
+.hero-top{display:flex;justify-content:space-between;gap:16px;color:var(--muted)}
+.hero-top span:first-child{color:var(--blue)}
+.wordmark{font-family:"Arial Black",Arial,Helvetica,sans-serif;color:var(--blue);font-size:clamp(106px,19.25vw,320px);font-weight:900;line-height:.78;letter-spacing:-.105em;text-transform:uppercase;margin:clamp(36px,5vw,80px) 0 clamp(55px,7vw,106px);max-width:100%}
+.wordmark span{display:block}
+.hero-bottom{border-top:2px solid var(--blue);padding-top:24px;display:grid;grid-template-columns:1.15fr .57fr;gap:11vw}
+.hero-bottom h2{margin:0;font-weight:800;font-size:clamp(28px,3.45vw,54px);line-height:1.16;letter-spacing:-.065em}
+.hero-side{max-width:385px;display:flex;flex-direction:column;gap:25px;align-items:flex-start}
+.hero-side p{font-size:17px;line-height:1.6;color:var(--muted);margin:0}
+.txtlink{font-size:14px;color:var(--blue);font-weight:700;border-bottom:1px solid var(--blue);padding-bottom:5px}
+.txtlink:hover{border-bottom-width:2px}
+.section{border-top:1px solid var(--line);padding-top:36px;padding-bottom:clamp(85px,10vw,152px)}
+.grid{display:grid;grid-template-columns:.85fr 2fr;gap:clamp(30px,5vw,94px);align-items:start}
+.kicker{font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);font-weight:700;padding-top:4px}
+.mainhead{font-size:clamp(34px,4.6vw,74px);letter-spacing:-.068em;line-height:1.08;font-weight:750;margin:0 0 65px;max-width:1000px}
+.topic{border-top:1px solid var(--line);display:grid;grid-template-columns:36px 1fr 1.05fr;gap:26px;align-items:start;padding:25px 0 30px}
+.topic:last-child{border-bottom:1px solid var(--line)}
+.number{color:var(--blue);font-size:12px;font-weight:700;line-height:1.4}
+.topic h3{font-size:clamp(22px,2.2vw,32px);letter-spacing:-.052em;line-height:1.15;margin:0;font-weight:750}
+.topic p{font-size:15px;line-height:1.7;margin:0;color:var(--muted)}
+.manifesto{font-size:clamp(38px,6vw,98px);line-height:1.05;letter-spacing:-.079em;font-weight:800;margin:0 0 30px}
+.manifesto em{color:var(--blue);font-style:normal}
+.detail{font-size:17px;color:var(--muted);max-width:700px;line-height:1.75;margin:0}
+.subhead{font-size:clamp(32px,4vw,61px);line-height:1.1;letter-spacing:-.07em;margin:0 0 48px}
+.release{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:23px 0;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.release p{margin:0;color:var(--muted);font-size:15px}
+.release strong{font-size:12px;font-weight:700;color:var(--blue);white-space:nowrap;text-transform:uppercase;letter-spacing:.06em}
+.release-link{margin:22px 0 0}
+.person{display:grid;grid-template-columns:1fr 1fr;align-items:baseline;gap:20px;border-top:1px solid var(--line);padding:22px 0}
+.person:last-child{border-bottom:1px solid var(--line)}
+.person b{font-size:clamp(20px,2.5vw,33px);font-weight:750;letter-spacing:-.05em}
+.person span{color:var(--muted);font-size:14px}
+footer{border-top:2px solid var(--blue);padding-top:24px;padding-bottom:26px}
+.footer-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;font-size:13px}
+.footer-top p{margin:0;color:var(--muted)}
+.footer-top div{display:flex;gap:25px}
+.footer-wordmark{color:var(--blue);font-family:"Arial Black",Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.105em;font-size:clamp(54px,12.3vw,205px);line-height:.85;margin-top:clamp(78px,10vw,155px);white-space:nowrap}
+@media(max-width:950px){.grid{grid-template-columns:1fr;gap:25px}.mainhead{margin-bottom:42px}.wordmark{font-size:19vw}}
+@media(max-width:680px){.topbar{min-height:70px}nav{gap:20px}nav a:nth-child(2),nav a:nth-child(3){display:none}.hero{padding-top:39px;padding-bottom:85px}.hero-top{display:block}.hero-top span{display:block}.hero-top span+span{margin-top:6px}.wordmark{font-size:21vw;letter-spacing:-.105em;margin-top:59px;margin-bottom:90px}.hero-bottom{display:block;padding-top:20px}.hero-bottom h2{font-size:clamp(26px,7.6vw,46px)}.hero-side{margin-top:27px;gap:22px}.hero-side p{font-size:16px}.section{padding-top:30px;padding-bottom:88px}.mainhead{font-size:39px;margin-bottom:31px}.topic{grid-template-columns:30px 1fr;gap:10px 15px;padding:21px 0}.topic h3{font-size:25px}.topic p{grid-column:2}.manifesto{font-size:clamp(43px,9vw,66px)}.detail{font-size:16px}.subhead{margin-bottom:33px}.release{align-items:flex-start}.release strong{font-size:10px}.person{grid-template-columns:1fr;gap:5px}.footer-top{display:block}.footer-top div{margin:17px 0}.footer-wordmark{font-size:12.6vw;white-space:normal;margin-top:85px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-  <a class="skip" href="#content">Skip to content</a>
-  <header>
-    <nav class="nav wrap" aria-label="Main navigation">
-      <a class="logo" href="/" aria-label="Queos Labs home"><span class="logo-mark">Q</span> QUEOS LABS</a>
-      <div class="links"><a href="#research">Research</a><a href="#approach">Approach</a><a href="#people">People</a><a class="external" href="https://github.com/queoslabs" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
-    </nav>
-  </header>
-  <main id="content">
-    <div class="hero wrap">
-      <div>
-        <div class="eyebrow">Independent research · Est. 2026</div>
-        <h1>Questions worth <span>testing.</span></h1>
-        <p class="lead">Queos Labs explores machine learning through careful experiments, simple baselines, and reproducible evidence. Curiosity starts the work. Good measurement decides what survives.</p>
-        <div class="actions"><a class="button" href="#research">Explore our directions <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/queoslabs" target="_blank" rel="noopener noreferrer">View our GitHub →</a></div>
-      </div>
-      <div class="symbol" aria-hidden="true">
-        <svg viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="220" cy="220" r="189" stroke="#31545B" stroke-width="1"/>
-          <circle cx="220" cy="220" r="151" stroke="#375A5F" stroke-width="1" stroke-dasharray="4 8"/>
-          <circle cx="220" cy="220" r="112" stroke="#567A70" stroke-width="1.5"/>
-          <path d="M220 31V409M31 220H409" stroke="#273F46" stroke-width="1" stroke-dasharray="4 10"/>
-          <path d="M79 87L364 358" stroke="#2D434B" stroke-width="1"/>
-          <circle cx="341" cy="102" r="6" fill="#B6EB91"/>
-          <circle cx="76" cy="329" r="4" fill="#81E7DB"/>
-          <path d="M111 207C116 135 161 101 221 101C294 101 332 151 332 223C332 259 315 290 290 311L333 350" stroke="#B6EB91" stroke-width="27" stroke-linecap="square"/>
-          <path d="M309 335C282 354 251 361 220 361C146 361 108 316 108 245" stroke="#81E7DB" stroke-width="27" stroke-linecap="square"/>
-          <circle cx="220" cy="220" r="15" fill="#B6EB91"/>
-          <path d="M355 66H409M382 39V93" stroke="#81E7DB" stroke-width="1.5"/>
-        </svg>
-        <small>Observe / Test / Repeat</small>
-      </div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar wrap">
+  <a class="brand" href="/" aria-label="Queos Labs home">queos labs.</a>
+  <nav aria-label="Main navigation">
+    <a href="#research">Research</a>
+    <a href="#approach">Approach</a>
+    <a href="#people">People</a>
+    <a class="git" href="https://github.com/queoslabs" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </nav>
+</header>
+<main id="main">
+  <section class="hero wrap" aria-labelledby="lab-title">
+    <div class="hero-top eyebrow"><span>Independent research lab</span><span>Machine learning / Evaluation / Reasoning</span></div>
+    <h1 class="wordmark" id="lab-title"><span>QUEOS</span><span>LABS.</span></h1>
+    <div class="hero-bottom">
+      <h2>Small lab.<br>Big questions.<br>Careful experiments.</h2>
+      <div class="hero-side"><p>We explore machine learning through rigorous evaluation, clear ideas, and reproducible research.</p><a class="txtlink" href="#research">What we study ↘</a></div>
     </div>
-    <div class="line"></div>
-    <section id="research" class="wrap">
-      <div class="section-intro"><div><div class="eyebrow">Our research directions</div><h2>Open questions. Clear tests.</h2></div><p>We focus on research problems where rigorous evaluation matters more than chasing complexity.</p></div>
-      <div class="cards">
-        <article class="card"><span class="number">01 / EVALUATION</span><h3>Reliable model evaluation</h3><p>Stress-testing models, probing baselines, studying failure cases, and designing measurements that tell the truth.</p></article>
-        <article class="card"><span class="number">02 / MULTIMODAL</span><h3>Reasoning across modalities</h3><p>Investigating how systems use text, images, video, and structure when a task demands more than pattern matching.</p></article>
-        <article class="card"><span class="number">03 / SYSTEMS</span><h3>Practical research systems</h3><p>Building lightweight, reproducible workflows that make experiments understandable, repeatable, and useful.</p></article>
-      </div>
-    </section>
-    <div class="line"></div>
-    <section id="approach" class="wrap principles">
-      <div><div class="eyebrow">How we work</div><h2>Start small.<br>Know more.</h2><p>Interesting results need strong controls. We value methods that are easy to explain, compare, and reproduce.</p></div>
-      <div>
-        <div class="principle"><span class="number">01</span><div><strong>Baseline before breakthrough</strong><p>Begin with the simplest defensible reference, then earn every added layer of complexity.</p></div></div>
-        <div class="principle"><span class="number">02</span><div><strong>Inspect the misses</strong><p>Use error analysis and targeted evaluations to discover what a model actually learned.</p></div></div>
-        <div class="principle"><span class="number">03</span><div><strong>Keep experiments reproducible</strong><p>Document settings, decisions, limitations, and artifacts so claims can be independently checked.</p></div></div>
-      </div>
-    </section>
-    <div class="line"></div>
-    <section id="work" class="wrap">
-      <div class="eyebrow">Research notes and releases</div>
-      <div class="work"><div><h3>The public research log is taking shape.</h3><p>Technical notes, methods, results, and open-source implementations will be listed here as they are ready for release. No placeholder results or unverified claims.</p></div><span class="pill">Launching</span></div>
-    </section>
-    <div class="line"></div>
-    <section id="people" class="wrap">
-      <div class="eyebrow">People</div><h2>Researchers behind the questions.</h2>
-      <div class="people">
-        <div class="person"><strong>Nilanjan Sarkar</strong><span>Research collaborator · <a class="text-link" href="https://github.com/nilansa">GitHub profile ↗</a></span></div>
-        <div class="person"><strong>Raman Rayaprolu</strong><span>Research collaborator</span></div>
-      </div>
-    </section>
-  </main>
-  <footer><div class="wrap"><div><span class="footer-name">Queos Labs</span> · Independent research</div><div>© 2026 Queos Labs · <a class="text-link" href="https://github.com/queoslabs">GitHub ↗</a></div></div></footer>
+  </section>
+  <section class="section wrap" id="research" aria-labelledby="research-title">
+    <div class="grid"><div class="kicker">01 — Research</div><div>
+      <h2 class="mainhead" id="research-title">Understanding what works, and why.</h2>
+      <div class="topic"><span class="number">01</span><h3>Model evaluation</h3><p>Simple baselines, calibration, robustness, and systematic error analysis.</p></div>
+      <div class="topic"><span class="number">02</span><h3>Multimodal reasoning</h3><p>Exploring how models reason about language, images, video, time, and physical structure.</p></div>
+      <div class="topic"><span class="number">03</span><h3>Research systems</h3><p>Lean, transparent pipelines that make experiments easier to reproduce and improve.</p></div>
+    </div></div>
+  </section>
+  <section class="section wrap" id="approach" aria-labelledby="approach-title">
+    <div class="grid"><div class="kicker">02 — Our approach</div><div>
+      <h2 class="manifesto" id="approach-title">Less hype.<br><em>More evidence.</em></h2>
+      <p class="detail">Clear experiments can be more valuable than complicated stories. Start with a strong baseline. Measure carefully. Study failure cases. Share what can be reproduced.</p>
+    </div></div>
+  </section>
+  <section class="section wrap" id="notes" aria-labelledby="notes-title">
+    <div class="grid"><div class="kicker">03 — Research notes</div><div>
+      <h2 class="subhead" id="notes-title">Work in the open.</h2>
+      <div class="release"><p>Technical reports, papers, and code will be linked here when released.</p><strong>Forthcoming</strong></div>
+      <p class="release-link"><a class="txtlink" href="https://github.com/queoslabs" target="_blank" rel="noopener noreferrer">Explore the organization ↗</a></p>
+    </div></div>
+  </section>
+  <section class="section wrap" id="people" aria-labelledby="people-title">
+    <div class="grid"><div class="kicker">04 — People</div><div>
+      <h2 class="subhead" id="people-title">Research is a team effort.</h2>
+      <div class="person"><b>Nilanjan Sarkar</b><span>Research collaborator · <a href="https://github.com/nilansa" target="_blank" rel="noopener noreferrer">GitHub ↗</a></span></div>
+      <div class="person"><b>Raman Rayaprolu</b><span>Research collaborator</span></div>
+    </div></div>
+  </section>
+</main>
+<footer class="wrap">
+  <div class="footer-top"><p>Independent machine-learning research.</p><div><a href="#research">Research</a><a href="#people">People</a><a href="https://github.com/queoslabs" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p>© 2026 Queos Labs</p></div>
+  <div class="footer-wordmark" aria-label="Queos Labs">QUEOS LABS.</div>
+</footer>
 </body>
 </html>
